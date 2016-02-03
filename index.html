@@ -9,22 +9,25 @@
     <!-- <script src="app.js"></script> -->
   </head>
   <body>
-    <div id="left">
-      <div id="monster-name"></div>
-      <div id="current-word"></div>
-      <div id="input">
-        <form id="input-form"  autocomplete="off">
-          <input id="input-field" autofocus type="text" placeholder="Type Here">
-          <input id="submit-button" type="submit">
-        </form>
+    <div id="screen">
+      <h1 id="title">ANAGRAM BATTLE!!</h1>
+      <div id="left">
+        <div id="monster-name"></div>
+        <div id="current-word"></div>
+        <div id="input">
+          <form id="input-form"  autocomplete="off">
+            <input id="input-field" autofocus type="text" placeholder="Type Here">
+            <input id="submit-button" type="submit">
+          </form>
+        </div>
+        <div id="guesses">
+          <ul></ul>
+        </div>
+        <div id="defeated"></div>
       </div>
-      <div id="guesses">
-        <ul></ul>
+      <div id="right">
+        <div id="monster-image"></div>
       </div>
-      <div id="defeated"></div>
-    </div>
-    <div id="right">
-      <div id="monster-image"></div>
     </div>
   </body>
   <script>

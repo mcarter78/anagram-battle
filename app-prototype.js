@@ -51,25 +51,9 @@ Game.prototype = {
       e.preventDefault();
       var $formGuess = $("#input-field");
       if(words.length === 0) {                            // win condition
-        monstersDefeated++;
-        words = ["evil", "live", "veil", "vile"];         // placeholder, resetting the words array
-        $formGuess.val(null);
-        $("#guesses ul").empty();
-        _this.newAnagram();
-        _this.newMonster();
+        _this.defeatMonster();
       } else {
-        var targetWordIndex = words.indexOf($formGuess.val());
-        if (targetWordIndex != -1) { // if user guess is included in the array...
-          var $newListItem = $("<li>");
-          var targetWord = words[targetWordIndex];
-          words.splice(targetWordIndex, 1); // remove word from array
-          $newListItem.html(targetWord);
-          $("#guesses ul").append($newListItem);
-          if (words.length === 0){
-            $formGuess.submit();
-          }
-        }
-        console.log($formGuess.val());
+        _this.checkWords($formGuess.val());
         $formGuess.val(null);
 
       }
@@ -97,8 +81,8 @@ Game.prototype = {
       // display its name
       $("#monster-name").html("<h1>You have been attacked by</br> <span class='red'>" + chosenMonster.name + "</span>!</h1>");
       // display its image
-      $("#monster-image").html("<h3>" + chosenMonster.name + " -- HP: " + 30 + "</h3>"); // placeholder hp
-      $("#monster-image").append("<img src=" + chosenMonster.image + ">");
+      $("#monster-image").html("<img src=" + chosenMonster.image + ">");
+      $("#monster-image").append("<h3>" + chosenMonster.name + " -- HP: " + 30 + "</h3>"); // placeholder hp
       $("#defeated").html("<h3>Monsters Defeated: " + monstersDefeated + "</h3>");
       // pop the monster object from the array so it will not repeat
       monsters.splice(monsters.indexOf(chosenMonster), 1);
@@ -112,10 +96,30 @@ Game.prototype = {
     return Math.floor(Math.random() * (array.length -1));
   },
 
-  checkWords: function(){
-
-
+  checkWords: function(guess){
+    var targetWordIndex = words.indexOf(guess);
+    if (targetWordIndex != -1) { // if user guess is included in the array...
+      var $newListItem = $("<li>");
+      var targetWord = words[targetWordIndex];
+      words.splice(targetWordIndex, 1); // remove word from array
+      $newListItem.html(targetWord);
+      $("#guesses ul").append($newListItem);
+      if (words.length === 0){
+        $("#input-field").submit();
+      }
+    }
+    console.log(guess);
   },
+
+  defeatMonster: function(){
+    monstersDefeated++;
+    words = ["evil", "live", "veil", "vile"];         // placeholder, resetting the words array
+    $("#input-field").val(null);
+    $("#guesses ul").empty();
+    this.newAnagram();
+    this.newMonster();
+  },
+
   youWin: function(){
     $("body").empty();
     $("body").html("<h1 class='huge red'>YOU DEFEATED ALL THE MONSTERS!</h1>");
