@@ -9,15 +9,20 @@
     <!-- <script src="app.js"></script> -->
   </head>
   <body>
-    <div id="current-word"></div>
-    <div id="input">
-      <form id="input-form" autocomplete="off">
-        <input id="input-field" type="text" placeholder="Type Here">
-        <input id="submit-button" type="submit">
-      </form>
+    <div id="left">
+      <div id="current-word"></div>
+      <div id="input">
+        <form id="input-form" autocomplete="off">
+          <input id="input-field" type="text" placeholder="Type Here">
+          <input id="submit-button" type="submit">
+        </form>
+      </div>
+      <div id="guesses">
+        <ul></ul>
+      </div>
     </div>
-    <div id="guesses">
-      <ul></ul>
+    <div id="right">
+      <img id="placeholder" src="img/zombie.jpg">
     </div>
   </body>
   <script>
