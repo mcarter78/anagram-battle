@@ -46,6 +46,7 @@ Game.prototype = {
 
   init: function() {
     //set event listeners
+    var _this = this;
     $("#input-form").on("submit", function(e){
       e.preventDefault();
       var $formGuess = $("#input-field");
@@ -54,10 +55,10 @@ Game.prototype = {
         words = ["evil", "live", "veil", "vile"];         // placeholder, resetting the words array
         $formGuess.val(null);
         $("#guesses ul").empty();
-        Game.prototype.newAnagram();
-        Game.prototype.newMonster();
+        _this.newAnagram();
+        _this.newMonster();
       } else {
-        var targetWordIndex = words.indexOf($formGuess.val());                                          // BUGGY -- this function will
+        var targetWordIndex = words.indexOf($formGuess.val());
         if (targetWordIndex != -1) { // if user guess is included in the array...
           var $newListItem = $("<li>");
           var targetWord = words[targetWordIndex];
