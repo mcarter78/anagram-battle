@@ -49,30 +49,28 @@ Game.prototype = {
     $("#input-form").on("submit", function(e){
       e.preventDefault();
       var $formGuess = $("#input-field");
-      if(words.length === 0){
+      if(words.length === 0) {                            // win condition
         monstersDefeated++;
         words = ["evil", "live", "veil", "vile"];         // placeholder, resetting the words array
         $formGuess.val(null);
         $("#guesses ul").empty();
         Game.prototype.newAnagram();
         Game.prototype.newMonster();
-      }
-      else {                                              // BUGGY -- this function will
-        words.forEach(function(index){                    // only accept a correct answer
-          if($formGuess.val() === index){                 // if it is at words[0]
-            var $newListItem = $("<li>");
-            var addThis = words.splice(index, 1);
-            $newListItem.html(addThis + " ");
-            $("#guesses ul").append($newListItem);
-            console.log(words);
-            if (words.length === 0){
-              $formGuess.submit();
-            }
+      } else {
+        var targetWordIndex = words.indexOf($formGuess.val());                                          // BUGGY -- this function will
+        if (targetWordIndex != -1) { // if user guess is included in the array...
+          var $newListItem = $("<li>");
+          var targetWord = words[targetWordIndex];
+          words.splice(targetWordIndex, 1); // remove word from array
+          $newListItem.html(targetWord);
+          $("#guesses ul").append($newListItem);
+          if (words.length === 0){
+            $formGuess.submit();
           }
-          console.log($formGuess.val());
-          $formGuess.val(null);
+        }
+        console.log($formGuess.val());
+        $formGuess.val(null);
 
-        });
       }
     });
     this.newAnagram();
