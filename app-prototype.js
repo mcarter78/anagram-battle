@@ -24,7 +24,7 @@
           }
         });
         console.log($formGuess.val());
-        $formGuess.val(null);                               // does not work
+        $formGuess.val(null);                             
       });
       this.newAnagram();
     },
