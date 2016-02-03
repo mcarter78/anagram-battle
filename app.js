@@ -1,49 +1,105 @@
 // components needed
   // timer to start at 60 seconds and decrease as game is active
-  // counter for number of games played
-  // counter for number of monsters defeated
+  // counter for number of games played                     (Player.gamesPlayed)
+  // counter for number of monsters defeated                (Player.score)
   // "Time's Up!" array with anagrams
-  // Array of EASY words
   // Array of NORMAL words
   // Array of HARD words
-  // monster hit points
+  // monster hit points                                     (Monster.hp)
   // counter of correct words entered
-  // high score list object (HOW TO MAKE IT PERSIST?)
+  // high score list object (HOW TO MAKE IT PERSIST?
 
-// start with prompt for player's name
-// append form & submit button
-  // validate input
-    // if input is true
-      // add player name to history (HOW TO ACHIEVE THIS?)
-      // remove form & submit button
+var Game = function(){
+  this.score = 0;
+  this.timer = 60;
+};
 
-// change to display prompt to choose a difficulty
-// append EASY, NORMAL, HARD buttons
-  // set event listeners to button click a
-  // when button clicked
-    // make appropriate call to API for the corresponding array of anagrams
-    // remove prompt text and buttons
 
-// build main game screen
-  // append "Time's up" display, loop through the array and change every 10 seconds
-  // append array of anagrams, display each word as it is correctly guessed
-  // append and display monster, hit points
+var Player = function(name, gamesPlayed){
+  this.name = name;
+  this.gamesPlayed = gamesPlayed;
+};
+
+var Monster = function(name, hp, image){
+  this.name = name;
+  this.hp = hp;
+  this.image = image;
+};
+
+Game.prototype = {
+  init: function(player) {
+     //set event listeners
+  },
+  reset: function() {
+
+  }
+
+  // move more appropriate functions in here
+
+};
+
+function getPlayerName(str){
+  // start with prompt for player's name
+  // append form & submit button
+    // validate input
+      // if input is true
+        // add player name to history (HOW TO ACHIEVE THIS?)
+        // remove form & submit button
+}
+
+function chooseDifficulty(){
+  // change to display prompt to choose a difficulty
+  // append NORMAL, HARD buttons
+    // set event listeners to button click
+    // when button clicked
+      // make appropriate calls to API for the corresponding arrays of anagrams
+        // forEach word in NORMAL or HARD array:
+        // ajax GET request
+        // url: http://www.anagramica.com/best/:starterword
+        // store response (object containing array of words) in a variable
+        // loop through response and remove starterword if it exists (not always at index 0)
+        // unshift starter word into array (force it to index 0)
+      // remove prompt text and buttons
+      // startTimer();
+      // newAnagram();
+      // newMonster();
+}
+
+function startTimer(){
+  // start pre-timer -- 3 seconds
+  // display each number (fadeIn / fadeOut)
+  // start game-timer -- 60 seconds
+  // display game-timer (static)
+}
+
+function doDamage(){
+  // subtract 10 from Monster.hp
   // append monster damage indicator, but only display when correct guess is made
     // fade out damage indicator
-  // if all words are guessed
-    // remove monster (effect?)
-    // append next array of anagrams
-    // change monster and reset monster hit points
-    // add 15 seconds to timer
-    // continue
+}
 
-// when timer reaches 0
-  // display "Time's Up!"
-  // remove array of anagrams
-  // remove monster, hit points
+function timesUp(arr){
+  // append "Time's up" display, loop through the array and change every 10 seconds
+  // if timer reaches 0, display "Time's Up!"
+  // remove array of anagrams, monster hp display, input form
   // append "You defeated (number of monsters defeated) monsters"
     // change wording of this display based on number defeated
     // higher number receives higher praise
-  // append reset "start again" button
-    // event listener on button
-      // initializes new game
+}
+
+function newAnagram(str){
+  // append array of anagrams, display each word as it is correctly guessed
+  // startTimer();
+  // doDamage();
+}
+
+function defeatMonster(){
+  // if all words are guessed
+    // remove monster (effect?)
+    // newMonster();
+    // newAnagram();
+}
+
+function newMonster(){
+  // display random monster from Monster object, with name and hp
+}

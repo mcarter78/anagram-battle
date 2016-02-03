@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <title></title>
     <link href="style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="app-prototype.js"></script>
+    <!-- <script src="app.js"></script> -->
   </head>
   <body>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="app.js"></script>
+    <div id="current-word"></div>
+    <div id="input">
+      <form id="input-form" autocomplete="off">
+        <input id="input-field" type="text" placeholder="Type Here">
+        <input id="submit-button" type="submit">
+      </form>
+    </div>
+    <div id="guesses">
+      <ul></ul>
+    </div>
   </body>
+  <script>
+    var game = new Game();
+    game.init();
+  </script>
 </html>
