@@ -1,4 +1,5 @@
 var words = ["evil", "live", "veil", "vile"];
+var monstersDefeated = 0;
 var monsters = [
   {
     name: "a Zombie",
@@ -49,6 +50,7 @@ Game.prototype = {
       e.preventDefault();
       var $formGuess = $("#input-field");
       if(words.length === 0){
+        monstersDefeated++;
         words = ["evil", "live", "veil", "vile"];         // placeholder, resetting the words array
         $formGuess.val(null);
         $("#guesses ul").empty();
@@ -98,6 +100,7 @@ Game.prototype = {
       // display its image
       $("#monster-image").html("<h3>" + chosenMonster.name + " -- HP: " + 30 + "</h3>"); // placeholder hp
       $("#monster-image").append("<img src=" + chosenMonster.image + ">");
+      $("#defeated").html("<h3>Monsters Defeated: " + monstersDefeated + "</h3>");
       // pop the monster object from the array so it will not repeat
       monsters.splice(monsters.indexOf(chosenMonster), 1);
       if(monsters.length === 0){
