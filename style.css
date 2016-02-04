@@ -36,6 +36,14 @@ h1 {
   color: #0f0;
 }
 
+#damage {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
 /* LEFT PANEL STYLES */
 
 #left {
