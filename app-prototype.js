@@ -121,7 +121,7 @@ Game.prototype = {
     monsters.splice(monsters.indexOf(chosenMonster), 1);
     // append array of anagrams
     var currentWord = chosenMonster.words.shift();
-    var $currentWord = $("<h1>Input Anagrams For: </br></br><span class='huge green'>" + currentWord + "</span></br></br>To Fight Back!</h1>");
+    var $currentWord = $("<h1>Input 3 Anagrams For: </br></br><span class='huge green'>" + currentWord + "</span></br></br>To Fight Back!</h1>");
     $("#current-word").html($currentWord);
     var _this = this;
     if(monsters.length === 0){
