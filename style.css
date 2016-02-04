@@ -1,7 +1,7 @@
 body, html {
   width: 100%;
   text-align: center;
-  font-family: helvetica, sans-serif;
+  font-family: "Merriweather", serif;
 }
 
 ul, li {
@@ -11,17 +11,21 @@ ul, li {
 }
 
 h1 {
-  font-size: 38px;
+  font-size: 32px;
 }
 
 #screen {
   width: 80%;
+  height: 600px;
+  position: relative;
   margin: 0 auto;
 }
 
 #title {
   font-size: 58px;
+  font-weight: 900;
   margin: 10px auto;
+  letter-spacing: 0.3em;
 }
 
 .huge {
@@ -33,7 +37,10 @@ h1 {
 }
 
 .green {
-  color: #0f0;
+  color: #000;
+  background: #eee8aa;
+  padding: 0 10px;
+  border-radius: 3px;
 }
 
 #damage {
@@ -47,22 +54,23 @@ h1 {
 /* LEFT PANEL STYLES */
 
 #left {
-  width: 48%;
+  width: 45%;
   height: 600px;
   display: inline-block;
   float: left;
+  padding-left: 15px;
 }
 
 #guesses {
-  height: 100px;
+  height: 65px;
   width: 100%;
 }
 
 #guesses ul {
   width: 90%;
-  height: 60%;
+  height: 90%;
   border: 1px solid #000;
-  margin: 40px auto;
+  margin: 30px auto;
 }
 
 #guesses ul li {
@@ -84,7 +92,8 @@ h1 {
 }
 
 #defeated {
-  margin-top: 50px;
+  margin: 0;
+  margin-top: 13px;
 }
 
 /* RIGHT PANEL STYLES */
@@ -98,5 +107,5 @@ h1 {
 }
 
 #right img {
-  margin-top: 30px;
+  margin-top: 10px;
 }
