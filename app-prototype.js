@@ -1,10 +1,3 @@
-var $inputForm = $("#input-form");
-var $huge = $("<h1 class='huge'>");
-var $greenSpan = $("<span class='green'>");
-var $redSpan = $("<span class='red'>");
-var $hpSpan = $("<span id='hp'>");
-var $damageSpan = $("<span id='damage'>");
-var $h3 = $("<h3>");
 var chosenMonster;
 var monsterHP = 30;
 var monstersDefeated = 0;
@@ -60,6 +53,7 @@ Game.prototype = {
 
   init: function() {
     monstersDefeated = 0;
+    monsterHP = 30;
     this.startScreen();
   },
 
@@ -136,15 +130,15 @@ Game.prototype = {
   newMonster: function(){
     // monster object lives in monsters array index 0-7
     // select a random monster (number between 0 and array.length - 1)
-
     monsterHP = 30;
     chosenMonster = monsters[this.randomNumber(monsters)];
     console.log(chosenMonster);
     // display its name
     $("#monster-name").html("<h1>You have been attacked by</br> <span class='red'>" + chosenMonster.name + "</span>!</h1>");
     // display its image
-    $("#monster-image").html("<img src=" + chosenMonster.image + ">");
-    $("#monster-image").append("<h3>" + chosenMonster.name + " -- HP: <span id='hp'>" + monsterHP + "</span><span id='damage' class='hidden'>  -10</span></h3>"); // placeholder hp
+    $monsterImage = $("#monster-image").html("<img src=" + chosenMonster.image + ">");
+    $monsterImage.fadeIn(800);
+    $("#monster-image").append("<h3>" + chosenMonster.name + " -- HP: <span id='hp'>" + monsterHP + "</span><span id='damage' class='hidden'> -10</span></h3>"); // placeholder hp
     $("#defeated").html("<h3>Monsters Defeated: " + monstersDefeated + "</h3>");
     // pop the monster object from the array so it will not repeat
     monsters.splice(monsters.indexOf(chosenMonster), 1);
@@ -174,7 +168,7 @@ Game.prototype = {
       $("#guesses ul").append($newListItem);
       _this.doDamage();
       if (chosenMonster.words.length === 0){
-        $("#input-field").submit();
+        setTimeout(function(){$("#input-field").submit();}, 800);
       }
     }
     console.log(guess);
@@ -184,17 +178,18 @@ Game.prototype = {
     monsterHP = monsterHP - 10;
     $("#hp").html(monsterHP);
     $("#monster-image img").effect("shake");
-    $("#damage").removeClass("hidden");
-    $("#damage").fadeOut().delay(200).addClass("hidden");       // not working -- fix later
+    var $damage = $("#damage").removeClass("hidden");
+    $damage.fadeIn(400);
+    $damage.delay(400).fadeOut(400);       // not working -- fix later
   },
 
   defeatMonster: function(){
+    var _this = this;
+    $("#monster-image").effect("shake").effect("shake").fadeOut(800);
     monstersDefeated++;
-    //words = ["evil", "live", "veil", "vile"];         // placeholder, resetting the words array
     $("#input-field").val(null);
     $("#guesses ul").empty();
-    //this.newAnagram();
-    this.newMonster();
+    setTimeout(function(){_this.newMonster();}, 1600);
   },
 
   youWin: function(){
