@@ -51,6 +51,18 @@ h1 {
   display: none;
 }
 
+#play-button,
+#play-again {
+  font-family: "Merriweather", serif;
+  color: white;
+  font-size: 32px;
+  width: 120px;
+  height: 80px;
+  background: forestgreen;
+  border: none;
+  border-radius: 5px;
+}
+
 /* LEFT PANEL STYLES */
 
 #left {

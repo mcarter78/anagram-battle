@@ -1,4 +1,10 @@
 var $inputForm = $("#input-form");
+var $huge = $("<h1 class='huge'>");
+var $greenSpan = $("<span class='green'>");
+var $redSpan = $("<span class='red'>");
+var $hpSpan = $("<span id='hp'>");
+var $damageSpan = $("<span id='damage'>");
+var $h3 = $("<h3>");
 var chosenMonster;
 var monsterHP = 30;
 var monstersDefeated = 0;
@@ -44,8 +50,6 @@ var monsters = [
     words: ["serve","sever","veers","verse"]
   },
 ];
-console.log(monsters);
-
 
 var Game = function(){
   this.score = 0;
@@ -55,13 +59,18 @@ var Game = function(){
 Game.prototype = {
 
   init: function() {
-    //set event listeners
+    monstersDefeated = 0;
+    this.startScreen();
+  },
+
+  startGame: function(){
+    $("#screen").empty();
     this.getArrays();
+    this.battleScreen();
+    this.newMonster();
     var _this = this;
-    $("#play-again").on("click", function(e){             // NOT WORKING YET, DOES NOT RESET VARIABLES
-      _this.resetGame();
-    });
     $("#input-form").on("submit", function(e){
+      console.log("input");
       e.preventDefault();
       var $formGuess = $("#input-field");
       if(chosenMonster.words.length === 0) {                            // win condition
@@ -69,12 +78,36 @@ Game.prototype = {
       } else {
         _this.checkWords($formGuess.val());
         $formGuess.val(null);
-
       }
     });
+  },
 
-    //this.newAnagram();
-    this.newMonster();
+  startScreen: function(){
+    $("#screen").empty();
+    $("#screen").append("<h1 class=huge>Instructions:</h1>");
+    $("#screen").append("<h3>Battle monsters with Anagrams!</br>Enter 3 Anagrams to defeat the current monster and move on to the next.</br>Press Enter to submit your answer.");
+    $("#screen").append("<button id='play-button'>Play!</button>");
+    var _this = this;
+    $("#play-button").on("click", function(e){
+      console.log("click");
+      _this.startGame();
+    });
+  },
+
+  battleScreen: function(){
+    $("#screen").empty();
+    $("#screen").append("<div id='left'>");
+    $("#screen").append("<div id='right'>");
+    $("#left").append("<div id='monster-name'>");
+    $("#left").append("<div id='current-word'>");
+    $("#left").append("<div id='input'>");
+    $("#left").append("<div id='guesses'>");
+    $("#left").append("<div id='defeated'>");
+    $("#input").append("<form id='input-form'  autocomplete='off'>");
+    $("#input-form").append("<input id='input-field' autofocus type='text' placeholder='Attack!'>");
+    $("#input-form").append("<input id='submit-button' type='submit'>");
+    $("#guesses").append("<ul>");
+    $("#right").append("<div id='monster-image'>");
   },
 
   resetGame: function() {
@@ -100,14 +133,10 @@ Game.prototype = {
     // fix game functions to grab the words from the monster objects
   },
 
-  newAnagram: function(){
-
-  },
-
   newMonster: function(){
-
     // monster object lives in monsters array index 0-7
     // select a random monster (number between 0 and array.length - 1)
+
     monsterHP = 30;
     chosenMonster = monsters[this.randomNumber(monsters)];
     console.log(chosenMonster);
@@ -172,7 +201,12 @@ Game.prototype = {
     $("#screen").empty();
     $("#screen").html("<h1 class='huge red'>YOU DEFEATED ALL THE MONSTERS!</h1>");
     $("#screen").append("<h3>Monsters Defeated: " + monstersDefeated + "</h3>");
-    $("#screen").append("<button id='play-again'>Play Again</button>");
+    $("#screen").append("<button id='play-again'>Again?</button>");
+    var _this = this;
+    $("#play-again").on("click", function(e){             // NOT WORKING YET, DOES NOT RESET VARIABLES
+      console.log("click");
+      _this.resetGame();
+    });
   }
 };
 
