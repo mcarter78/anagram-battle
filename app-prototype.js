@@ -68,7 +68,7 @@ Game.prototype = {
       e.preventDefault();
       var $formGuess = $("#input-field");
       if(chosenMonster.words.length === 0) {                            // win condition
-        _this.defeatMonster();
+        _this.defeatMonster(chosenMonster);
       } else {
         _this.checkWords($formGuess.val());
         $formGuess.val(null);
@@ -132,6 +132,7 @@ Game.prototype = {
     // select a random monster (number between 0 and array.length - 1)
     monsterHP = 30;
     chosenMonster = monsters[this.randomNumber(monsters)];
+
     console.log(chosenMonster);
     // display its name
     $("#monster-name").html("<h1>You have been attacked by</br> <span class='red'>" + chosenMonster.name + "</span>!</h1>");
@@ -141,15 +142,13 @@ Game.prototype = {
     $("#monster-image").append("<h3>" + chosenMonster.name + " -- HP: <span id='hp'>" + monsterHP + "</span><span id='damage' class='hidden'> -10</span></h3>"); // placeholder hp
     $("#defeated").html("<h3>Monsters Defeated: " + monstersDefeated + "</h3>");
     // pop the monster object from the array so it will not repeat
-    monsters.splice(monsters.indexOf(chosenMonster), 1);
+
     // append array of anagrams
     var currentWord = chosenMonster.words.shift();
     var $currentWord = $("<h1>Input 3 Anagrams For: </br></br><span class='huge green'>" + currentWord + "</span></br></br>To Fight Back!</h1>");
     $("#current-word").html($currentWord);
     var _this = this;
-    if(monsters.length === 0){
-      _this.youWin();
-    }
+
     console.log(monsters);
   },
 
@@ -186,10 +185,14 @@ Game.prototype = {
   defeatMonster: function(){
     var _this = this;
     $("#monster-image").effect("shake").effect("shake").fadeOut(800);
+    monsters.splice(monsters.indexOf(chosenMonster), 1);
     monstersDefeated++;
     $("#input-field").val(null);
     $("#guesses ul").empty();
     setTimeout(function(){_this.newMonster();}, 1600);
+    if(monsters.length === 0){
+      setTimeout(function(){_this.youWin();}, 1600);
+    }
   },
 
   youWin: function(){
