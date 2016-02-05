@@ -24,7 +24,7 @@ to become the supreme champion of vocabulary wisdom!
 * **Jquery UI is used for shake effect**
 
 * **Monster art courtesy of Liam Carter, age 7.**
-![Alt text](/blob/master/img/artist/liam.jpg?raw=true)
+![Alt text](/img/artist/liam.jpg?raw=true)
 
 # Existing Features
 
