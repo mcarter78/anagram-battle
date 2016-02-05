@@ -22,7 +22,9 @@ to become the supreme champion of vocabulary wisdom!
 * **Game is built with JavaScript, using minimal HTML & CSS**
 * **Jquery is used for DOM manipulation**
 * **Jquery UI is used for shake effect**
+
 * **Monster art courtesy of Liam Carter, age 7.**
+![Alt text](/blob/master/img/artist/liam.jpg?raw=true)
 
 # Existing Features
 
