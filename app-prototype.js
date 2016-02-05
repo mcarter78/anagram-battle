@@ -203,6 +203,7 @@ Game.prototype = {
 
   youWin: function(){
     $("#screen").empty();
+    $("#reset-button").remove();
     $("#screen").html("<h1 class='huge red'>YOU DEFEATED ALL THE MONSTERS!</h1>");
     $("#screen").append("<h3>Monsters Defeated: " + monstersDefeated + "</h3>");
     $("#screen").append("<button id='play-again'>Again?</button>");

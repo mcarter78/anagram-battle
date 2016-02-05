@@ -16,6 +16,7 @@ h1 {
 
 button:focus {
   outline: none;
+  box-shadow: inset 0 0 10px #000;
 }
 
 #screen {
@@ -39,8 +40,9 @@ button:focus {
   color: #fff;
   font-family: "Merriweather", serif;
   background: #f00;
-  margin: 0 auto;
+  float: right;
   border: none;
+  margin-right: 10px;
 }
 
 .huge {
