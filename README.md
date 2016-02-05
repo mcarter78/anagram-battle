@@ -5,6 +5,8 @@ Go head to head with a variety of fearsome monsters, using your word knowledge t
 with 3 anagrams for the word given to send your foe to his doom.  Defeat all eight monsters
 to become the supreme champion of vocabulary wisdom!
 
+Play it now: http://scout-stations-77041.bitballoon.com/
+
 * **Click "Play" on start screen to begin a game.**
 * **Enter 3 correct anagrams into the "Attack!" form field to defeat a monster.**
 * **Once you have defeated all monsters, click on "Again?" button to start a new game.**
