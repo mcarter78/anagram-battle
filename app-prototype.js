@@ -1,4 +1,4 @@
-var $resetButton = $("<button id='reset-button'>Reset</button>")
+var $resetButton = $("<button id='reset-button'>Reset</button>");
 var chosenMonster;
 var monsterHP = 30;
 var monstersDefeated = 0;
