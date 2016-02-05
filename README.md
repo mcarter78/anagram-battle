@@ -8,11 +8,13 @@ to become the supreme champion of vocabulary wisdom!
 # Planning
 
 * **Link to project on Trello : https://trello.com/b/e5FS87Fs/anagram-battle**
+* **Link to wireframes: https://github.com/mcarter78/anagram-battle/tree/master/img/wireframes**
 
 # Technologies Used
 
-* **Jquery for DOM manipulation**
-* **Jquery UI for shake effect**
+* **Game is built with JavaScript, using minimal HTML & CSS**
+* **Jquery is used for DOM manipulation**
+* **Jquery UI is used for shake effect**
 
 # Existing Features
 
