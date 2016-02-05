@@ -1,9 +1,9 @@
-var $resetButton = $("<button id='reset-button'>Reset</button>");
-var chosenMonster;
-var monsterHP = 30;
-var monstersDefeated = 0;
-var monsters = [
-  {
+var $resetButton = $("<button id='reset-button'>Reset</button>");               // selects the reset button element for later use
+var chosenMonster;                                                              // inits the chosenMonster variable for hoisting purposes
+var monsterHP = 30;                                                             // inits the monster's HP value
+var monstersDefeated = 0;                                                       // inits the player's counter for monsters defeated
+var monsters = [                                                                // object containing monsters, their image, and words
+  {                                                                             // that will be associated with them
     name: "The Zombie",
     image: "img/zombie.jpg",
     words: ["bruise","buries","busier","rubies"]
@@ -45,54 +45,54 @@ var monsters = [
   },
 ];
 
-var Game = function(){
-  this.score = 0;
+var Game = function(){                                                          // constructor function for the game
+  this.score = 0;                                                               // contents will be used for later features
   this.timer = 60;
 };
 
-Game.prototype = {
+Game.prototype = {                                                              // game methods defined here
 
-  init: function() {
+  init: function() {                                                            // method to initialize a new game
     monstersDefeated = 0;
     monsterHP = 30;
     this.startScreen();
   },
 
-  startGame: function(){
-    $("#screen").empty();
-    this.getArrays();
+  startGame: function(){                                                        // method called when play button is clicked
+    $("#screen").empty();                                                       // wipes the screen and calls methods to
+    this.getArrays();                                                           // load array, monster and battle screen
     this.battleScreen();
     this.newMonster();
     var _this = this;
-    $("#reset-button").on("click", function(){
+    $("#reset-button").on("click", function(){                                  // event listener on reset button
       _this.resetGame();
     });
-    $("#input-form").on("submit", function(e){
+    $("#input-form").on("submit", function(e){                                  // event listener on form submit
       console.log("input");
       e.preventDefault();
       var $formGuess = $("#input-field");
-      if(chosenMonster.words.length === 0) {                            // win condition
+      if(chosenMonster.words.length === 0) {                                    // win condition
         _this.defeatMonster(chosenMonster);
-      } else {
+      } else {                                                                  // calls method to check for correct word input
         _this.checkWords($formGuess.val());
         $formGuess.val(null);
       }
     });
   },
 
-  startScreen: function(){
+  startScreen: function(){                                                      // method to build start screen and append to the DOM
     $("#screen").empty();
     $("#screen").append("<h1 class=huge>Instructions:</h1>");
     $("#screen").append("<h3>Battle monsters with Anagrams!</br>Enter 3 Anagrams to defeat the current monster and move on to the next.</br>Press Enter to submit your answer.");
     $("#screen").append("<button id='play-button'>Play!</button>");
     var _this = this;
-    $("#play-button").on("click", function(e){
+    $("#play-button").on("click", function(e){                                  // event trigger on play button to start game when clicked
       console.log("click");
       _this.startGame();
     });
   },
 
-  battleScreen: function(){
+  battleScreen: function(){                                                     // method to build battle screen and append it to the DOM
     $("#screen").empty();
     $("#screen").append("<div id='left'>");
     $("#screen").append("<div id='right'>");
@@ -109,14 +109,14 @@ Game.prototype = {
     $("body").append($resetButton);
   },
 
-  resetGame: function() {
-    // var newGame = new Game();
+  resetGame: function() {                                                       // method to reset game -- WIP
+    // var newGame = new Game();                                                // currently simply reloads the page
     // newGame.init();
     location.reload();
   },
 
-  getArrays: function(){                                          // word arrays hardcoded for now
-    // make ajax calls for arrays of anagrams                     // come back to this if time allows
+  getArrays: function(){                                                        // word arrays hardcoded for now
+    // make ajax calls for arrays of anagrams                                   // come back to this if time allows
     // for(var i = 0; i < monsters.length; i++){
     //   $.ajax({
     //     method: 'GET',
@@ -133,8 +133,8 @@ Game.prototype = {
     // fix game functions to grab the words from the monster objects
   },
 
-  newMonster: function(){
-    // monster object lives in monsters array index 0-7
+  newMonster: function(){                                                       // method to choose a monster from the monsters object,
+    // monster object lives in monsters array index 0-7                         // add its name, image, and set of words to the battle screen
     // select a random monster (number between 0 and array.length - 1)
     monsterHP = 30;
     chosenMonster = monsters[this.randomNumber(monsters)];
@@ -158,17 +158,17 @@ Game.prototype = {
     console.log(monsters);
   },
 
-  randomNumber: function(array){
+  randomNumber: function(array){                                                // generates a random number for which monster to chose
     return Math.floor(Math.random() * array.length);
   },
 
-  checkWords: function(guess){
+  checkWords: function(guess){                                                  // method to check if word submitted is one of the anagrams
     var _this = this;
     var targetWordIndex = chosenMonster.words.indexOf(guess);
-    if (targetWordIndex != -1) { // if user guess is included in the array...
+    if (targetWordIndex != -1) {                                                 // if user guess is included in the array...
       var $newListItem = $("<li>");
       var targetWord = chosenMonster.words[targetWordIndex];
-      chosenMonster.words.splice(targetWordIndex, 1); // remove word from array
+      chosenMonster.words.splice(targetWordIndex, 1);                           // remove word from array
       $newListItem.html(targetWord);
       $("#guesses ul").append($newListItem);
       _this.doDamage();
@@ -179,8 +179,8 @@ Game.prototype = {
     console.log(guess);
   },
 
-  doDamage: function(){
-    monsterHP = monsterHP - 10;
+  doDamage: function(){                                                         // method to decrease monster HP when correct word is submitted
+    monsterHP = monsterHP - 10;                                                 // also causes monster shake effect to trigger
     $("#hp").html(monsterHP);
     $("#monster-image img").effect("shake");
     var $damage = $("#damage").removeClass("hidden");
@@ -188,7 +188,7 @@ Game.prototype = {
     $damage.delay(400).fadeOut(400);       // not working -- fix later
   },
 
-  defeatMonster: function(){
+  defeatMonster: function(){                                                    // method to remove monster when defeated
     var _this = this;
     $("#monster-image").effect("shake").effect("shake").fadeOut(800);
     monsters.splice(monsters.indexOf(chosenMonster), 1);
@@ -201,8 +201,8 @@ Game.prototype = {
     }
   },
 
-  youWin: function(){
-    $("#screen").empty();
+  youWin: function(){                                                           // method to build you win screen and add to the DOM
+    $("#screen").empty();                                                       // when all monsters are defeated
     $("#reset-button").remove();
     $("#screen").html("<h1 class='huge red'>YOU DEFEATED ALL THE MONSTERS!</h1>");
     $("#screen").append("<h3>Monsters Defeated: " + monstersDefeated + "</h3>");
@@ -215,7 +215,7 @@ Game.prototype = {
   }
 };
 
-var Player = function(name, gamesPlayed){
+var Player = function(name, gamesPlayed){                                       // unused constructor, for use with future features
   this.name = name;
   this.gamesPlayed = gamesPlayed;
 };
@@ -226,7 +226,7 @@ Player.prototype = {
   }
 };
 
-var Monster = function(name, image){
+var Monster = function(name, image){                                            // unused constructor, for use with future features
   this.name = name;
   this.image = image;
 };
