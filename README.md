@@ -10,6 +10,8 @@ to become the supreme champion of vocabulary wisdom!
 * **Once you have defeated all monsters, click on "Again?" button to start a new game.**
 * **Click "Reset" button in bottom-right of screen to start a new game at any time.**
 
+
+
 # Planning
 
 * **Link to project on Trello : https://trello.com/b/e5FS87Fs/anagram-battle**
@@ -20,6 +22,7 @@ to become the supreme champion of vocabulary wisdom!
 * **Game is built with JavaScript, using minimal HTML & CSS**
 * **Jquery is used for DOM manipulation**
 * **Jquery UI is used for shake effect**
+* **Monster art courtesy of Liam Carter, age 7.**
 
 # Existing Features
 
