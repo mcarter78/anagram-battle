@@ -1,3 +1,4 @@
+var $resetButton = $("<button id='reset-button'>Reset</button>")
 var chosenMonster;
 var monsterHP = 30;
 var monstersDefeated = 0;
@@ -63,6 +64,9 @@ Game.prototype = {
     this.battleScreen();
     this.newMonster();
     var _this = this;
+    $("#reset-button").on("click", function(){
+      _this.resetGame();
+    });
     $("#input-form").on("submit", function(e){
       console.log("input");
       e.preventDefault();
@@ -102,11 +106,13 @@ Game.prototype = {
     $("#input-form").append("<input id='submit-button' type='submit'>");
     $("#guesses").append("<ul>");
     $("#right").append("<div id='monster-image'>");
+    $("body").append($resetButton);
   },
 
   resetGame: function() {
-    var newGame = new Game();
-    newGame.init();
+    // var newGame = new Game();
+    // newGame.init();
+    location.reload();
   },
 
   getArrays: function(){                                          // word arrays hardcoded for now

@@ -16,7 +16,7 @@ h1 {
 
 #screen {
   width: 80%;
-  height: 600px;
+  height: 580px;
   position: relative;
   margin: 0 auto;
 }
@@ -26,6 +26,17 @@ h1 {
   font-weight: 900;
   margin: 10px auto;
   letter-spacing: 0.3em;
+}
+
+#reset-button {
+  width: 50px;
+  height: 20px;
+  font-size: 14px;
+  color: #fff;
+  font-family: "Merriweather", serif;
+  background: #f00;
+  margin: 0 auto;
+  border: none;
 }
 
 .huge {
