@@ -142,3 +142,8 @@ button:focus {
 #right img {
   margin-top: 10px;
 }
+
+#timer {
+  color: red;
+  font-size: 25px;
+}
