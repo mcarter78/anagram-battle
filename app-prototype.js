@@ -80,6 +80,18 @@ Game.prototype = {                                                              
     });
   },
 
+  startTimer: function() {
+    var seconds = 60;
+    var timer = setInterval(function() {
+      $('#timer').html('timer: ' + seconds + 'seconds');
+      seconds -= 1;
+      if (seconds === -1) {
+        alert('NOT FAST ENOUGH TO BEAT THE MOSTER!');
+        clearInterval(timer);
+      }
+    }, 1000);
+  },
+
   startScreen: function(){                                                      // method to build start screen and append to the DOM
     $("#screen").empty();
     $("#screen").append("<h1 class=huge>Instructions:</h1>");
@@ -89,6 +101,7 @@ Game.prototype = {                                                              
     $("#play-button").on("click", function(e){                                  // event trigger on play button to start game when clicked
       console.log("click");
       _this.startGame();
+      _this.startTimer();
     });
   },
 
@@ -99,6 +112,7 @@ Game.prototype = {                                                              
     $("#left").append("<div id='monster-name'>");
     $("#left").append("<div id='current-word'>");
     $("#left").append("<div id='input'>");
+    $("#left").append("<div id='timer'>");
     $("#left").append("<div id='guesses'>");
     $("#left").append("<div id='defeated'>");
     $("#input").append("<form id='input-form'  autocomplete='off'>");
