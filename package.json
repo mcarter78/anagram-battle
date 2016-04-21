@@ -1,0 +1,19 @@
+{
+  "name": "anagram-battle",
+  "version": "1.0.0",
+  "description": "Anagram Battle is a game that tests your ability to deconstruct words and reconstruct them into new words. Go head to head with a variety of fearsome monsters, using your word knowledge to defeat them.  Come up with 3 anagrams for the word given to send your foe to his doom.  Defeat all eight monsters to become the supreme champion of vocabulary wisdom!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcarter78/anagram-battle.git"
+  },
+  "author": "Matt Carter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcarter78/anagram-battle/issues"
+  },
+  "homepage": "https://github.com/mcarter78/anagram-battle#readme"
+}
