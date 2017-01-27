@@ -45,19 +45,26 @@ button:focus {
   margin-right: 10px;
 }
 
-.huge {
-  font-size: 56px;
+#tileset {
+  text-align: center;
+  display: block;
 }
 
 .red {
   color: #f00;
 }
 
-.green {
+.tile {
+  display: inline;
+  float: left;
+  font-size: 42px;
+  font-weight: bold;
   color: #000;
   background: #eee8aa;
-  padding: 5px 10px;
   border-radius: 3px;
+  margin: 0 10px;
+  width: 55px;
+  height: 55px;
 }
 
 #damage {
@@ -88,6 +95,10 @@ button:focus {
   display: inline-block;
   float: left;
   padding-left: 15px;
+}
+
+#current-word h1 {
+  clear: both;
 }
 
 #guesses {

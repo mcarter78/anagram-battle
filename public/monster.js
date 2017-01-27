@@ -5,12 +5,10 @@ var Monster = function(name, image){                                            
 
 Monster.prototype = {
   newMonster: function(){                                                       // method to choose a monster from the monsters object,
+    monsterHP = 30;
     // monster object lives in monsters array index 0-7                         // add its name, image, and set of words to the battle screen
     // select a random monster (number between 0 and array.length - 1)
-    monsterHP = 30;
     chosenMonster = monsters[randomNumber(monsters)];
-
-    console.log(chosenMonster);
     // display its name
     $("#monster-name").html("<h1>You have been attacked by</br> <span class='red'>" + chosenMonster.name + "</span>!</h1>");
     // display its image
@@ -22,10 +20,15 @@ Monster.prototype = {
 
     // append array of anagrams
     var currentWord = chosenMonster.words.shift();
-    var $currentWord = $("<h1>Input 3 Anagrams For: </br></br><span class='huge green'>" + currentWord + "</span></br></br>To Fight Back!</h1>");
+    // for each letter in currentWord, create a div with that letter as innerText
+    currentWord = currentWord.split('');
+    console.log(currentWord);
+    var $currentWord = $("<h1>Input 3 Anagrams For:</h1><div id='tileset'></div><br><h1>To Fight Back!</h1>");
     $("#current-word").html($currentWord);
-    var _this = this;
-
-    console.log(monsters);
+    currentWord.forEach(function(letter) {
+      var $el = $('<div class="tile"></div>');
+      $el.html(letter);
+      $("#tileset").append($el);
+    });
   },
 };

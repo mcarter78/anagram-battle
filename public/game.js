@@ -22,7 +22,6 @@ Game.prototype = {                                                              
       _this.resetGame();
     });
     $("#input-form").on("submit", function(e){                                  // event listener on form submit
-      console.log("input");
       e.preventDefault();
       var $formGuess = $("#input-field");
       if(chosenMonster.words.length === 0) {                                    // win condition
@@ -122,7 +121,7 @@ Game.prototype = {                                                              
   },
 
   doDamage: function(){                                                         // method to decrease monster HP when correct word is submitted
-    monsterHP = monsterHP - 10;                                                 // also causes monster shake effect to trigger
+    monsterHP -= 10;                                                 // also causes monster shake effect to trigger
     $("#hp").html(monsterHP);
     $("#monster-image img").effect("shake");
     var $damage = $("#damage").removeClass("hidden");

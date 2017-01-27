@@ -6,7 +6,7 @@
 
 var $resetButton = $("<button id='reset-button'>Reset</button>");               // selects the reset button element for later use
 var chosenMonster;                                                              // inits the chosenMonster variable for hoisting purposes
-var monsterHP = 30;                                                             // inits the monster's HP value
+//var monsterHP = 30;                                                             // inits the monster's HP value
 var monstersDefeated = 0;                                                       // inits the player's counter for monsters defeated
 var monsters = [                                                                // object containing monsters, their image, and words
   {                                                                             // that will be associated with them
